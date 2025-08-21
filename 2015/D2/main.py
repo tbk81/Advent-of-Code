@@ -20,17 +20,15 @@ import re
 with open("data.txt") as f:
     data = f.readlines()
 
-# li = [list(map(int, re.findall(r'\d+', num.strip()))) for num in data]
-# print(li[0][0])
-li = [[2, 3, 4], [1, 1, 10]]
+total = 0
+li = [list(map(int, re.findall(r'\d+', num.strip()))) for num in data]
+# print(li)
+# li = [[4, 23, 21], [22, 29, 19]]
+# for i in li:
+#     print(i)
 for i in li:
-    # print(i)
-    for n in i:
-        num = []
-
-# num = [(li[0][0] * li[0][1]), (li[0][1] * li[0][2]), (li[0][2] * li[0][0])]
-# small = min(num)
-# print(num)
-# print(small)
-# l, w, h
-# 2*l*w + 2*w*h + 2*h*l
+    small_num = min([(i[0] * i[1]), (i[1] * i[2]), (i[2] * i[0])])
+    two_num = [2*(i[0] * i[1]), 2*(i[1] * i[2]), 2*(i[2] * i[0])]
+    sq_ft = sum(two_num) + small_num
+    total +=sq_ft
+print(total)
