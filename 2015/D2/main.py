@@ -1,4 +1,5 @@
 """
+|---------------------------------------- Part 1 ----------------------------------------|
 The elves are running low on wrapping paper, and so they need to submit an order for more. They have a list of the
 dimensions (length l, width w, and height h) of each present, and only want to order exactly as much as they need.
 
@@ -14,6 +15,8 @@ For example:
     of slack, for a total of 43 square feet.
 
 All numbers in the elves' list are in feet. How many total square feet of wrapping paper should they order?
+
+|---------------------------------------- Part 2 ----------------------------------------|
 """
 import re
 
