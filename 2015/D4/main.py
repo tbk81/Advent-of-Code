@@ -20,9 +20,19 @@ For example:
 |---------------------------------------- Part 2 ----------------------------------------|
 
 """
+import hashlib
 
-key = "ckczppom"
+key = "ckczppom11"
+key1 = "ckczppom"
+ex1_key = "abcdef609043"
+ex2_key = "pqrstuv1048970"
 
-
+for i in range(1000):
+    new_key = key1 + str(i)
+    # print(new_key)
+    res = hashlib.md5(new_key.encode())
+    if res.hexdigest()[0] == "0":
+        print(new_key)
+        print(res.hexdigest()+"\n")
 
 
