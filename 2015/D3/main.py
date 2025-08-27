@@ -31,6 +31,7 @@ For example:
     ^v^v^v^v^v now delivers presents to 11 houses, with Santa going one direction and Robo-Santa going the other.
 
 """
+# Part 1
 # from collections import Counter
 #
 # with open("data.txt") as f:
@@ -55,35 +56,45 @@ For example:
 # # print(coord_li)
 # counts = Counter(coord_li)  # This was the answer
 
-
+# Part 2
 from collections import Counter
 
-with open("test_data.txt") as f:
+with open("data.txt") as f:
     line = f.readlines()
-print(line)
+# print(line)
 santa_li = []
+robo_li = []
 for i in range(len(line[0])):
     if i%2 == 0:
         santa_li.append(line[0][i])
-print(santa_li)
-
-# coord_li = [(0, 0)]
-# current_coord = [0, 0]
-# for i in range(len(line[0])):
-#     if line[0][i] == ">":
-#         current_coord[0] += 1
-#         coord_li.append((current_coord[0], current_coord[1]))
-#     elif line[0][i] == "<":
-#         current_coord[0] -= 1
-#         coord_li.append((current_coord[0], current_coord[1]))
-#     elif line[0][i] == "^":
-#         current_coord[1] += 1
-#         coord_li.append((current_coord[0], current_coord[1]))
-#     elif line[0][i] == "v":
-#         current_coord[1] -= 1
-#         coord_li.append((current_coord[0], current_coord[1]))
-#
-# # print(coord_li)
-# counts = Counter(coord_li)  # This was the answer
+    elif i%2 == 1:
+        robo_li.append(line[0][i])
+# print(santa_li)
+# print(robo_li)
 
 
+def coord_maker(li):
+    coord_li = [(0, 0)]
+    current_coord = [0, 0]
+    for i in range(len(li)):
+        if li[i] == ">":
+            current_coord[0] += 1
+            coord_li.append((current_coord[0], current_coord[1]))
+        elif li[i] == "<":
+            current_coord[0] -= 1
+            coord_li.append((current_coord[0], current_coord[1]))
+        elif li[i] == "^":
+            current_coord[1] += 1
+            coord_li.append((current_coord[0], current_coord[1]))
+        elif li[i] == "v":
+            current_coord[1] -= 1
+            coord_li.append((current_coord[0], current_coord[1]))
+    return coord_li
+
+santa = coord_maker(santa_li)
+robo = coord_maker(robo_li)
+robo_santa = santa + robo
+# print(robo_santa)
+counts = Counter(robo_santa)  # This was the answer
+print(counts)
+print(len(counts))
