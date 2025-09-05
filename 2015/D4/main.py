@@ -20,19 +20,22 @@ For example:
 |---------------------------------------- Part 2 ----------------------------------------|
 
 """
+
+# Part 1
 import hashlib
 
-key = "ckczppom11"
-key1 = "ckczppom"
+key = "ckczppom"
 ex1_key = "abcdef609043"
 ex2_key = "pqrstuv1048970"
-
-for i in range(1000):
-    new_key = key1 + str(i)
-    # print(new_key)
+for i in range(10000000):
+    new_key = key + str(i)
     res = hashlib.md5(new_key.encode())
-    if res.hexdigest()[0] == "0":
+    hashy = res.hexdigest()
+    # if hashy[:5] == "00000":
+    #     print(new_key)
+    #     print(hashy)
+
+# Part 2
+    if hashy[:6] == "000000":
         print(new_key)
-        print(res.hexdigest()+"\n")
-
-
+        print(hashy)
