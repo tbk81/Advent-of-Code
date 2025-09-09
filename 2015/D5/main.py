@@ -21,43 +21,60 @@ For example:
     dvszwmarrgswjxmb is naughty because it contains only one vowel.
 
 How many strings are nice?
-"""
 
+|---------------------------------------- Part 2 ----------------------------------------|
+Realizing the error of his ways, Santa has switched to a better model of determining whether a string is naughty or nice. None of the old rules apply, as they are all clearly ridiculous.
+
+Now, a nice string is one with all of the following properties:
+
+    It contains a pair of any two letters that appears at least twice in the string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not like aaa (aa, but it overlaps).
+    It contains at least one letter which repeats with exactly one letter between them, like xyx, abcdefeghi (efe), or even aaa.
+
+For example:
+
+    qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj) and a letter that repeats with exactly one letter between them (zxz).
+    xxyxx is nice because it has a pair that appears twice and a letter that repeats with one between, even though the letters used by each rule overlap.
+    uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat with a single letter between them.
+    ieodomkazucvgmuy is naughty because it has a repeating letter with one between (odo), but no pair that appears twice.
+
+How many strings are nice under these new rules?
+"""
+# Part 1
 # Get data into a list
-santa_li = []
-with open("data.txt") as f:
-    data = f.readlines()
-    for l in data:
-        line = l.strip('\n')
-        santa_li.append(line)
+# santa_li = []
+# with open("data.txt") as f:
+#     data = f.readlines()
+#     for l in data:
+#         line = l.strip('\n')
+#         santa_li.append(line)
 # print(santa_li)
 # print(len(santa_li))
 # disallowed substrings and remove from a list
-naughty_strings = ["ab", "cd", "pq", "xy"]
-for line in santa_li:
-    for s in naughty_strings:
-        if s in line:
-            santa_li.pop()
+# naughty_strings = ["ab", "cd", "pq", "xy"]
+# for line in santa_li:
+#     for s in naughty_strings:
+#         if s in line:
+#             santa_li.pop()
             # print(line)
             # print("yes")
 # print(santa_li)
 # print(len(santa_li))
 
-nice_string_li = []
+# nice_string_li = []
 
 
 # double letter
-def double_char(li):
-    current_char = ""
-    for line in li:
-        for char in line:
-            if char == current_char:
-                current_char = char
-            print(char)
-        print("\n")
-
-
-double_char(santa_li)
+# def double_char(li):
+#     current_char = ""
+#     for line in li:
+#         for char in line:
+#             if char == current_char:
+#                 current_char = char
+#             print(char)
+#         print("\n")
+#
+#
+# double_char(santa_li)
 
 # Find at least 3 vowels
 #  vowels = ["a", "e", "i", "o", "u"]
@@ -83,3 +100,25 @@ double_char(santa_li)
 #             current_char = char
 #             # print(char)
 #         print("\n")
+
+
+# import re
+#
+# with open('day5.txt', 'r') as h:
+#     datalines = h.readlines()
+#
+# count = sum(1 for s in datalines
+#       if len([x for x in s if x in "aeiou"]) > 2
+#       and not any(x in s for x in ["ab", "cd", "pq", "xy"])
+#       and re.search(r"([a-z])\1", s)
+#  )
+# print(count)
+#
+# count = sum(
+#       1 for s in datalines
+#       if len(re.findall(r"([a-z]{2}).*\1", s))
+#       and re.findall(r"([a-z]).\1", s)
+#  )
+# print(count)
+
+# Part 2
