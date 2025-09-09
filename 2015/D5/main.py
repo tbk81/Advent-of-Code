@@ -23,9 +23,63 @@ For example:
 How many strings are nice?
 """
 
+# Get data into a list
+santa_li = []
 with open("data.txt") as f:
     data = f.readlines()
- for strings in data:
-     if strings
+    for l in data:
+        line = l.strip('\n')
+        santa_li.append(line)
+# print(santa_li)
+# print(len(santa_li))
+# disallowed substrings and remove from a list
+naughty_strings = ["ab", "cd", "pq", "xy"]
+for line in santa_li:
+    for s in naughty_strings:
+        if s in line:
+            santa_li.pop()
+            # print(line)
+            # print("yes")
+# print(santa_li)
+# print(len(santa_li))
+
+nice_string_li = []
 
 
+# double letter
+def double_char(li):
+    current_char = ""
+    for line in li:
+        for char in line:
+            if char == current_char:
+                current_char = char
+            print(char)
+        print("\n")
+
+
+double_char(santa_li)
+
+# Find at least 3 vowels
+#  vowels = ["a", "e", "i", "o", "u"]
+# for line in santa_li:
+#     vowel_count = 0
+#     for v in vowels:
+#         if v in line:
+#             vowel_count += 1
+#     if vowel_count >= 3:
+#         print(line)
+#         print("yes")
+
+
+# double letter
+# current_char = ""
+#     for line in li:
+#         for char in line:
+#             if char == current_char:
+#                 print(line)
+#                 print(char)
+#                 print(current_char)
+#                 print("yes")
+#             current_char = char
+#             # print(char)
+#         print("\n")
