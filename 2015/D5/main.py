@@ -23,19 +23,25 @@ For example:
 How many strings are nice?
 
 |---------------------------------------- Part 2 ----------------------------------------|
-Realizing the error of his ways, Santa has switched to a better model of determining whether a string is naughty or nice. None of the old rules apply, as they are all clearly ridiculous.
+Realizing the error of his ways, Santa has switched to a better model of determining whether a string is naughty
+or nice. None of the old rules apply, as they are all clearly ridiculous.
 
 Now, a nice string is one with all of the following properties:
 
-    It contains a pair of any two letters that appears at least twice in the string without overlapping, like xyxy (xy) or aabcdefgaa (aa), but not like aaa (aa, but it overlaps).
-    It contains at least one letter which repeats with exactly one letter between them, like xyx, abcdefeghi (efe), or even aaa.
+    It contains a pair of any two letters that appear at least twice in the string without overlapping,
+    like xyxy (xy) or aabcdefgaa (aa), but not like aaa (aa, but it overlaps).
+    It contains at least one letter which repeats with exactly one letter between them, like xyx, abcdefeghi
+    (efe), or even aaa.
 
 For example:
 
-    qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj) and a letter that repeats with exactly one letter between them (zxz).
-    xxyxx is nice because it has a pair that appears twice and a letter that repeats with one between, even though the letters used by each rule overlap.
+    qjhvhtzxzqqjkmpb is nice because it has a pair that appears twice (qj) and a letter that repeats with exactly
+    one letter between them (zxz).
+    xxyxx is nice because it has a pair that appears twice and a letter that repeats with one between, even though
+    the letters used by each rule overlap.
     uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat with a single letter between them.
-    ieodomkazucvgmuy is naughty because it has a repeating letter with one between (odo), but no pair that appears twice.
+    ieodomkazucvgmuy is naughty because it has a repeating letter with one between (odo), but no pair that appears
+    twice.
 
 How many strings are nice under these new rules?
 """
@@ -55,8 +61,8 @@ How many strings are nice under these new rules?
 #     for s in naughty_strings:
 #         if s in line:
 #             santa_li.pop()
-            # print(line)
-            # print("yes")
+# print(line)
+# print("yes")
 # print(santa_li)
 # print(len(santa_li))
 
@@ -90,16 +96,16 @@ How many strings are nice under these new rules?
 
 # double letter
 # current_char = ""
-#     for line in li:
-#         for char in line:
-#             if char == current_char:
-#                 print(line)
-#                 print(char)
-#                 print(current_char)
-#                 print("yes")
-#             current_char = char
-#             # print(char)
-#         print("\n")
+# for line in santa_li:
+#     for char in line:
+#         if char == current_char:
+#             print(line)
+#             print(char)
+#             print(current_char)
+#             print("yes")
+#         current_char = char
+#         # print(char)
+#     print("\n")
 
 
 # import re
@@ -122,3 +128,30 @@ How many strings are nice under these new rules?
 # print(count)
 
 # Part 2
+
+# Get data into a list
+santa_li = []
+with open("data.txt") as f:
+    data = f.readlines()
+    for l in data:
+        line = l.strip('\n')
+        santa_li.append(line)
+# print(santa_li)
+# print(len(santa_li))
+pair_li = []
+
+
+# find pairs
+def pair_char(li):
+    current_char = ""
+    for string in li:
+        for char in string:
+            if char == current_char:
+                pair_li.append(string)
+                break
+            current_char = char
+        # print(string)
+
+
+pair_char(santa_li)
+print(pair_li)
