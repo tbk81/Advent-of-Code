@@ -11,7 +11,8 @@ ideal lighting configuration.
 Lights in your grid are numbered from 0 to 999 in each direction; the lights in each corner are at
 0,0, 0,999, 999,999, and 999,0. The instructions include whether to turn on, turn off, or toggle various inclusive
 ranges given as coordinate pairs. Each coordinate pair represents opposite corners of a rectangle, inclusive;
-a coordinate pair like 0,0 through 2,2 therefore refers to 9 lights in a 3x3 square. The lights all start turned off.
+a coordinate pair like 0,0 through 2,2 therefore refers to 9 lights in a 3x3 square.
+The lights all start turned off.
 
 To defeat your neighbors this year, all you have to do is set up your lights by doing the instructions Santa sent
 you in order.
@@ -28,10 +29,35 @@ After following the instructions, how many lights are lit?
 |---------------------------------------- Part 2 ----------------------------------------|
 
 """
+
+
 instructions = []
-with open("data.txt") as f:
+parse_li = []
+with open("test_data.txt") as f:
     data = f.readlines()
     for line in data:
         line = line.strip('\n')
         instructions.append(line)
 print(instructions)
+
+for i in instructions:
+    line = i.split()
+    if line[0] == "toggle":
+        line.remove("through")
+        parse_li.append(line)
+    elif line[0] == "turn":
+        line.remove("turn")
+        line.remove("through")
+        parse_li.append(line)
+
+for i in range(len(parse_li)):
+    parse_li[i][1] = tuple(parse_li[i][1].split(","))
+    parse_li[i][2] = tuple(parse_li[i][2].split(","))
+
+# for i in range(len(parse_li)):
+#     parse_li[i][]
+
+print(parse_li)
+
+
+
