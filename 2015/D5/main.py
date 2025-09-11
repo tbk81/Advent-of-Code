@@ -131,27 +131,38 @@ How many strings are nice under these new rules?
 
 # Get data into a list
 santa_li = []
+str_pair_li = []
+nice_li = []
 with open("data.txt") as f:
     data = f.readlines()
     for l in data:
         line = l.strip('\n')
         santa_li.append(line)
-# print(santa_li)
-# print(len(santa_li))
-pair_li = []
-
 
 # find pairs
 def pair_char(li):
-    current_char = ""
     for string in li:
-        for char in string:
-            if char == current_char:
-                pair_li.append(string)
+        char_par_li = []
+        for i in range(len(string) - 1):
+            char_par_li.append(string[i] + string[i + 1])
+        for pair in char_par_li:
+            if string.count(pair) >= 2:
+                str_pair_li.append(string)
                 break
-            current_char = char
-        # print(string)
 
 
+def middle_char(li):
+    for string in li:
+        for i in range(len(string) - 2):
+            if string[i] == string[i + 2]:
+                nice_li.append(string)
+                break
+
+
+print(len(santa_li))
 pair_char(santa_li)
-print(pair_li)
+print(str_pair_li)
+print(len(str_pair_li))
+middle_char(str_pair_li)
+print(nice_li)
+print(len(nice_li))
