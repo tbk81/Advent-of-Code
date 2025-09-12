@@ -38,7 +38,7 @@ with open("test_data.txt") as f:
     for line in data:
         line = line.strip('\n')
         instructions.append(line)
-print(instructions)
+# print(instructions)
 
 for i in instructions:
     line = i.split()
@@ -51,13 +51,23 @@ for i in instructions:
         parse_li.append(line)
 
 for i in range(len(parse_li)):
-    parse_li[i][1] = tuple(parse_li[i][1].split(","))
-    parse_li[i][2] = tuple(parse_li[i][2].split(","))
+    parse_li[i][1] = list(parse_li[i][1].split(","))
+    parse_li[i][2] = list(parse_li[i][2].split(","))
 
-# for i in range(len(parse_li)):
-#     parse_li[i][]
+for i in range(len(parse_li)):
+    parse_li[i][1][0] = int(parse_li[i][1][0])
+    parse_li[i][1][1] = int(parse_li[i][1][1])
+    parse_li[i][2][0] = int(parse_li[i][2][0])
+    parse_li[i][2][1] = int(parse_li[i][2][1])
+
+light_li = []
+for i in range(len(parse_li)):
+    height = abs(parse_li[i][1][0] - parse_li[i][2][0]) + 1
+    width = abs(parse_li[i][1][1] - parse_li[i][2][1]) + 1
+    total = height * width
+    light_li.append([parse_li[i][0], total])
 
 print(parse_li)
-
+print(light_li)
 
 
