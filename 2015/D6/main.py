@@ -29,7 +29,7 @@ After following the instructions, how many lights are lit?
 |---------------------------------------- Part 2 ----------------------------------------|
 
 """
-
+import numpy as np
 
 instructions = []
 parse_li = []
@@ -59,15 +59,19 @@ for i in range(len(parse_li)):
     parse_li[i][1][1] = int(parse_li[i][1][1])
     parse_li[i][2][0] = int(parse_li[i][2][0])
     parse_li[i][2][1] = int(parse_li[i][2][1])
-
-light_li = []
-for i in range(len(parse_li)):
-    height = abs(parse_li[i][1][0] - parse_li[i][2][0]) + 1
-    width = abs(parse_li[i][1][1] - parse_li[i][2][1]) + 1
-    total = height * width
-    light_li.append([parse_li[i][0], total])
-
+#
+# light_li = []
+# for i in range(len(parse_li)):
+#     height = abs(parse_li[i][1][0] - parse_li[i][2][0]) + 1
+#     width = abs(parse_li[i][1][1] - parse_li[i][2][1]) + 1
+#     total = height * width
+#     light_li.append([parse_li[i][0], total])
+#
 print(parse_li)
-print(light_li)
+# print(light_li)
 
+arr = np.zeros((1000, 1000), int)
+print(arr)
+arr[0, 0] = 100
+print(arr)
 
