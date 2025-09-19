@@ -29,11 +29,13 @@ After following the instructions, how many lights are lit?
 |---------------------------------------- Part 2 ----------------------------------------|
 
 """
+import sys
 import numpy as np
+# np.set_printoptions(threshold=sys.maxsize)
 
 instructions = []
 parse_li = []
-with open("test_data.txt") as f:
+with open("data.txt") as f:
     data = f.readlines()
     for line in data:
         line = line.strip('\n')
@@ -59,19 +61,42 @@ for i in range(len(parse_li)):
     parse_li[i][1][1] = int(parse_li[i][1][1])
     parse_li[i][2][0] = int(parse_li[i][2][0])
     parse_li[i][2][1] = int(parse_li[i][2][1])
+
+light_li = []
+for i in range(len(parse_li)):
+    height = abs(parse_li[i][1][0] - parse_li[i][2][0]) + 1
+    width = abs(parse_li[i][1][1] - parse_li[i][2][1]) + 1
+    total = height * width
+    light_li.append([parse_li[i][0], total])
 #
-# light_li = []
-# for i in range(len(parse_li)):
-#     height = abs(parse_li[i][1][0] - parse_li[i][2][0]) + 1
-#     width = abs(parse_li[i][1][1] - parse_li[i][2][1]) + 1
-#     total = height * width
-#     light_li.append([parse_li[i][0], total])
-#
-print(parse_li)
+# print(parse_li)
 # print(light_li)
 
 arr = np.zeros((1000, 1000), int)
-print(arr)
-arr[0, 0] = 100
-print(arr)
+for l in range(len(parse_li)):
+    if parse_li[l][0] == "on":
+        x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+        y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+        for y in range(y_range):
+            for x in range(x_range):
+                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
+    elif parse_li[l][0] == "off":
+        x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+        y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+        for y in range(y_range):
+            for x in range(x_range):
+                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
+    elif parse_li[l][0] == "toggle":
+        x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+        y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+        for y in range(y_range):
+            for x in range(x_range):
+                if arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] == 0:
+                    arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
+                else:
+                    arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
+# print(arr)
 
+unique, counts = np.unique(arr, return_counts=True)
+lit_dict = dict(zip(unique, counts))
+print(lit_dict)
