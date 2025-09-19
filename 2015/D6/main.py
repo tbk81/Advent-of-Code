@@ -27,11 +27,22 @@ For example:
 After following the instructions, how many lights are lit?
 
 |---------------------------------------- Part 2 ----------------------------------------|
+You finish implementing your winning light pattern when you realize you mistranslated Santa's message from
+Ancient Nordic Elvish.
+The light grid you bought actually has individual brightness controls; each light can have a brightness of zero or
+more. The lights all start at zero.
+The phrase turn on actually means that you should increase the brightness of those lights by 1.
+The phrase turn off actually means that you should decrease the brightness of those lights by 1, to a minimum of zero.
+The phrase toggle actually means that you should increase the brightness of those lights by 2.
+What is the total brightness of all lights combined after following Santa's instructions?
+
+For example:
+
+    turn on 0,0 through 0,0 would increase the total brightness by 1.
+    toggle 0,0 through 999,999 would increase the total brightness by 2000000.
 
 """
-import sys
 import numpy as np
-# np.set_printoptions(threshold=sys.maxsize)
 
 instructions = []
 parse_li = []
@@ -72,6 +83,33 @@ for i in range(len(parse_li)):
 # print(parse_li)
 # print(light_li)
 
+# Part 1
+# arr = np.zeros((1000, 1000), int)
+# for l in range(len(parse_li)):
+#     if parse_li[l][0] == "on":
+#         x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+#         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+#         for y in range(y_range):
+#             for x in range(x_range):
+#                 arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
+#     elif parse_li[l][0] == "off":
+#         x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+#         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+#         for y in range(y_range):
+#             for x in range(x_range):
+#                 arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
+#     elif parse_li[l][0] == "toggle":
+#         x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
+#         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
+#         for y in range(y_range):
+#             for x in range(x_range):
+#                 if arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] == 0:
+#                     arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
+#                 else:
+#                     arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
+# print(arr)
+
+# Part 2
 arr = np.zeros((1000, 1000), int)
 for l in range(len(parse_li)):
     if parse_li[l][0] == "on":
@@ -79,24 +117,27 @@ for l in range(len(parse_li)):
         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
         for y in range(y_range):
             for x in range(x_range):
-                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
+                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] += 1
     elif parse_li[l][0] == "off":
         x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
         for y in range(y_range):
             for x in range(x_range):
-                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
+                if arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] == 0:
+                    pass
+                else:
+                    arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] -= 1
     elif parse_li[l][0] == "toggle":
         x_range = abs(parse_li[l][1][0] - parse_li[l][2][0]) + 1
         y_range = abs(parse_li[l][1][1] - parse_li[l][2][1]) + 1
         for y in range(y_range):
             for x in range(x_range):
-                if arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] == 0:
-                    arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 1
-                else:
-                    arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] = 0
-# print(arr)
+                arr[parse_li[l][1][0] + x, parse_li[l][1][1] + y] += 2
 
 unique, counts = np.unique(arr, return_counts=True)
 lit_dict = dict(zip(unique, counts))
-print(lit_dict)
+
+brightness = 0
+for k in range(1, len(lit_dict)):
+    brightness += k * lit_dict[k]
+print(brightness)
