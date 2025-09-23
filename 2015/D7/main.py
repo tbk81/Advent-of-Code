@@ -48,3 +48,18 @@ y: 456
 
 In little Bobby's kit's instructions booklet (provided as your puzzle input), what signal is ultimately provided to wire a?
 """
+# & = AND
+# | = OR
+# LSHIFT = << (x<<y x is shifted to the left by y places)
+# RSHIFT = >> (x<<y x is shifted to the right by y places)
+# NOT =
+
+x = 123
+y = 456
+d = x & y
+e = x | y
+f = x << 2
+g = y >> 2
+h = ~ x
+print(h)
+
