@@ -61,5 +61,6 @@ e = x | y
 f = x << 2
 g = y >> 2
 h = ~ x
-print(h)
+i = ~ y
+print(i)
 
