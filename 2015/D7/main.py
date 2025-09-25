@@ -46,7 +46,8 @@ i: 65079
 x: 123
 y: 456
 
-In little Bobby's kit's instructions booklet (provided as your puzzle input), what signal is ultimately provided to wire a?
+In little Bobby's kit's instruction booklet (provided as your puzzle input), what signal is
+ultimately provided to wire a?
 """
 # & = AND
 # | = OR
@@ -60,7 +61,8 @@ d = x & y
 e = x | y
 f = x << 2
 g = y >> 2
-h = ~ x
-i = ~ y
+h = ~x & 0xFFFF
+i = ~y & 0xFFFF
+print(h)
 print(i)
 
