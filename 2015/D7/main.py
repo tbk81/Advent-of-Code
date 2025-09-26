@@ -53,16 +53,29 @@ ultimately provided to wire a?
 # | = OR
 # LSHIFT = << (x<<y x is shifted to the left by y places)
 # RSHIFT = >> (x<<y x is shifted to the right by y places)
-# NOT =
+# ~x & 0xFFFF = NOT
 
-x = 123
-y = 456
-d = x & y
-e = x | y
-f = x << 2
-g = y >> 2
-h = ~x & 0xFFFF
-i = ~y & 0xFFFF
-print(h)
-print(i)
+# x = 123
+# y = 456
+# d = x & y
+# e = x | y
+# f = x << 2
+# g = y >> 2
+# h = ~x & 0xFFFF
+# i = ~y & 0xFFFF
+# print(h)
+# print(i)
 
+# with open("test_data.txt") as f:
+#     data = f.readlines()
+#     for line in data:
+#         line = line.strip('\n')
+#         print(line)
+        # instructions.append(line)
+
+with open('test_data.txt', 'r') as f:
+    main_dict = {key.strip(): value.strip() for key, value in (line.split('->', 1) for line in f)}
+print(main_dict)
+
+for k,v in main_dict.items():
+    print(k)
