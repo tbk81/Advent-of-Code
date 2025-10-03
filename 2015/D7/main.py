@@ -84,8 +84,19 @@ ultimately provided to wire a?
 main_dict = {}
 with open('test_data.txt', 'r') as f:
     for line in f.readlines():
-        l, r = line.strip().split()(' -> ')
-        table[r] = l
+        l, r = line.strip().split(' -> ')
+        main_dict[r] = l
+
+
+
+# final_dict = {}
+# def get_vals(s):
+#     if s in final_dict:
+#         return final_dict[s]
+#     if s.isdegit():
+#         final_dict[s] = int(final_dict[s])
+#         return final_dict[s]
+
 
 # for k, v in main_dict.items():
 #     if isinstance(k, str):
@@ -96,6 +107,6 @@ with open('test_data.txt', 'r') as f:
 #             main_dict[k] = int(main_dict[k])
 #             # k = int(k)
 #         # print(k)
-# print(main_dict)
+print(main_dict)
 
 
