@@ -73,9 +73,29 @@ ultimately provided to wire a?
 #         print(line)
         # instructions.append(line)
 
-with open('test_data.txt', 'r') as f:
-    main_dict = {key.strip(): value.strip() for key, value in (line.split('->', 1) for line in f)}
-print(main_dict)
+# with open('test_data.txt', 'r') as f:
+#     main_dict = {int(key.strip()) if key.strip().isdigit() else key.strip(): value.strip()
+#                  for key, value in (line.split('->', 1) for line in f)}
+# print(main_dict)
 
-for k,v in main_dict.items():
-    print(k)
+# for k, v in main_dict.items():
+#     if k.start
+
+main_dict = {}
+with open('test_data.txt', 'r') as f:
+    for line in f.readlines():
+        l, r = line.strip().split()(' -> ')
+        table[r] = l
+
+# for k, v in main_dict.items():
+#     if isinstance(k, str):
+#         # print(k)
+#         if k.isdigit():
+#             # print(type(k))
+#             # main_dict[int(k)] = main_dict.pop(k)
+#             main_dict[k] = int(main_dict[k])
+#             # k = int(k)
+#         # print(k)
+# print(main_dict)
+
+
