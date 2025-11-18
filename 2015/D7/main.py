@@ -66,12 +66,37 @@ ultimately provided to wire a?
 # print(h)
 # print(i)
 
+
+main_dict = {}
+with open('test_data.txt', 'r') as f:
+    for line in f.readlines():
+        l, r = line.strip().split(' -> ')
+        main_dict[r] = l
+
+
+#
+#
+#
+# print(main_dict)
+
+def bitwise(num1, num2, op):
+    if op == "AND":
+        return int(num1) & int(num2)
+    elif op == "OR":
+        return int(num1) | int(num2)
+    else:
+        return 0
+
+
+print(bitwise(main_dict['x'], main_dict['y'], 'AND'))
+
+# --------------------------------------------------- TESTING --------------------------------------------------- #
 # with open("test_data.txt") as f:
 #     data = f.readlines()
 #     for line in data:
 #         line = line.strip('\n')
 #         print(line)
-        # instructions.append(line)
+# instructions.append(line)
 
 # with open('test_data.txt', 'r') as f:
 #     main_dict = {int(key.strip()) if key.strip().isdigit() else key.strip(): value.strip()
@@ -80,13 +105,6 @@ ultimately provided to wire a?
 
 # for k, v in main_dict.items():
 #     if k.start
-
-main_dict = {}
-with open('test_data.txt', 'r') as f:
-    for line in f.readlines():
-        l, r = line.strip().split(' -> ')
-        main_dict[r] = l
-
 
 
 # final_dict = {}
@@ -107,6 +125,3 @@ with open('test_data.txt', 'r') as f:
 #             main_dict[k] = int(main_dict[k])
 #             # k = int(k)
 #         # print(k)
-print(main_dict)
-
-
