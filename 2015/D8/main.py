@@ -1,4 +1,4 @@
-"""
+r"""
 --- Day 8: Matchsticks ---
 Space on the sleigh is limited this year, and so Santa will be bringing his list as a digital copy. He needs to
 know how much space it will take up when stored.
@@ -28,18 +28,13 @@ For example, given the four strings above, the total number of characters of str
 minus the total number of characters in memory for string values (0 + 3 + 7 + 1 = 11) is 23 - 11 = 12.
 """
 
-
-# with open('test_data.txt') as f:
-# with codecs.open(test_data.txt, 'r', encoding='unicode_escape') as f:
-#     data = f.readlines()
-#     data_li = [l.strip('\n') for l in data]
-    # data_li = [l for l in data]
-
-# print(data_li)
+import codecs
 
 
-f = open('test_data.txt')
-for line in f:
-    line = line.strip()
-    print(line)
+with open('test_data.txt') as f:
+    data = f.readlines()
+    data_li = [l.strip('\n') for l in data]
 
+for i in data_li:
+    print(i)
+    print(len(i))
