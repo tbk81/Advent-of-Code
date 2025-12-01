@@ -20,7 +20,23 @@ for c in data_li:
 print(f'total zeros: {zero_counter}')
 
 
-
+# -------------------------------------------------- PART 2 -------------------------------------------------- #
+current = 50
+zero_counter = 0
+for c in data_li:
+    if c[0] == "L":
+        for i in range(int(c[1:])):
+            current = (current - i) % 100
+            if current == 0:
+                zero_counter += 1
+            print(current)
+    else:
+        for i in range(int(c[1:])):
+            current = (current + i) % 100
+            if current == 0:
+                zero_counter += 1
+            print(current)
+# print(f'total zeros: {zero_counter}')
 
 
 
