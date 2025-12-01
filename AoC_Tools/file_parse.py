@@ -1,5 +1,8 @@
 class AutoParse:
 
+    def __init__(self):
+        pass
+
 
     def list_parse(self, li):
         with open(li) as f:
