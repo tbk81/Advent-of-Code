@@ -4,20 +4,20 @@ with open("data.txt") as f:
 # print(data_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
-current = 50
-zero_counter = 0
-for c in data_li:
-    if c[0] == "L":
-        current = (current - int(c[1:])) % 100
-        if current == 0:
-            zero_counter += 1
-        # print(current)
-    else:
-        current = (current + int(c[1:])) % 100
-        if current == 0:
-            zero_counter += 1
-        # print(current)
-print(f'total zeros: {zero_counter}')
+# current = 50
+# zero_counter = 0
+# for c in data_li:
+#     if c[0] == "L":
+#         current = (current - int(c[1:])) % 100
+#         if current == 0:
+#             zero_counter += 1
+#         # print(current)
+#     else:
+#         current = (current + int(c[1:])) % 100
+#         if current == 0:
+#             zero_counter += 1
+#         # print(current)
+# print(f'total zeros: {zero_counter}')
 
 
 # -------------------------------------------------- PART 2 -------------------------------------------------- #
@@ -26,17 +26,19 @@ zero_counter = 0
 for c in data_li:
     if c[0] == "L":
         for i in range(int(c[1:])):
-            current = (current - i) % 100
+            current = (current - 1) % 100
             if current == 0:
                 zero_counter += 1
-            print(current)
+        #     print(current)
+        # print("\n")
     else:
         for i in range(int(c[1:])):
-            current = (current + i) % 100
+            current = (current + 1) % 100
             if current == 0:
                 zero_counter += 1
-            print(current)
-# print(f'total zeros: {zero_counter}')
+        #     print(current)
+        # print("\n")
+print(f'total zeros: {zero_counter}')
 
 
 
@@ -50,20 +52,4 @@ for c in data_li:
 
 # for n in data_li:
 #     print(f"{int(n[1:])} - type: {type(int(n[1:]))}")
-
-# current = 50
-# zero_counter = 0
-# for c in data_li:
-#     if c[0] == "L":
-#         for i in range(int(c[1:])):
-#             current = (current - i) % 100
-#             if current == 0:
-#                 zero_counter += 1
-#             print(current)
-#     else:
-#         for i in range(int(c[1:])):
-#             current = (current + i) % 100
-#             if current == 0:
-#                 zero_counter += 1
-#             print(current)
 
