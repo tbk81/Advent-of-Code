@@ -11,7 +11,10 @@ parse_li = [[int(x) for x in s.split('-')] for s in inner_list]
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 for i in range(len(parse_li)):
     for n in range(parse_li[i][0], parse_li[i][1]+1):
-        print(n)
+        for digit in str(n):
+
+            print(int(digit))
+        print("\n")
     print("\n")
 
 
