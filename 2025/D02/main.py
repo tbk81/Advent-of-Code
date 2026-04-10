@@ -1,3 +1,4 @@
+import re
 # ------------------------------------------------ DATA PARSING ----------------------------------------------- #
 with open("test_data.txt") as f:
     data = f.readlines()
@@ -23,9 +24,12 @@ def li_maker(li):
     return li
 
 
-for code in parse_li:
-    li_maker(code)
-    for n in range(len(code)):
-        print(code[n])
+test_li = (li_maker(parse_li[0]))
 
+# (\d+) : Captures one or more digits and groups them (Group 1)
+# \1    : Matches the exact same text that was captured in Group 1
+pattern = r"(\d+)\1"
+for i in parse_li:
+    matches = [match.group(0) for match in re.finditer(pattern, str(i))]
+print(matches)
 
