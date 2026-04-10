@@ -11,6 +11,9 @@ parse_li = [[int(x) for x in s.split('-')] for s in inner_list]
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
 def li_maker(li):
+    """
+    Take a list from the parsed list and inserts the numbers that in range of the 2 numbers i.e., 11 thorough 22
+    """
     first_num = li[0]
     last_num = li[1] - 1
     num = first_num
@@ -20,4 +23,7 @@ def li_maker(li):
     return li
 
 
-print(li_maker(parse_li[0]))
+for i in parse_li:
+    li_maker(i)
+    print(i)
+
