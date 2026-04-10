@@ -25,8 +25,7 @@ def li_maker(li):
 
 for code in parse_li:
     li_maker(code)
-    for n in code:
-        print(str(n)[0])
-        print(str(n)[1])
+    for n in range(len(code)):
+        print(code[n])
 
 
