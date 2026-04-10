@@ -27,5 +27,6 @@ for code in parse_li:
     li_maker(code)
     for n in code:
         print(str(n)[0])
+        print(str(n)[1])
 
 
