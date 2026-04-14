@@ -3,11 +3,9 @@ import re
 with open("test_data.txt") as f:
     data = f.readlines()
     data_li = [line.split(",") for line in data]
-# print(data_li)
 
 inner_list = data_li[0]
 parse_li = [[int(x) for x in s.split('-')] for s in inner_list]
-# print(parse_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
@@ -24,12 +22,12 @@ def li_maker(li):
     return li
 
 
-test_li = (li_maker(parse_li[0]))
+test_li = [li_maker(li) for li in parse_li]
 
 # (\d+) : Captures one or more digits and groups them (Group 1)
 # \1    : Matches the exact same text captured in Group 1
-pattern = r"(\d+)\1"
-for i in parse_li:
+pattern = r"\b(\d+)\1\b"
+
+for i in test_li:
     matches = [match.group(0) for match in re.finditer(pattern, str(i))]
-    print(matches)
 
