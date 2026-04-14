@@ -27,9 +27,9 @@ def li_maker(li):
 test_li = (li_maker(parse_li[0]))
 
 # (\d+) : Captures one or more digits and groups them (Group 1)
-# \1    : Matches the exact same text that was captured in Group 1
+# \1    : Matches the exact same text captured in Group 1
 pattern = r"(\d+)\1"
 for i in parse_li:
     matches = [match.group(0) for match in re.finditer(pattern, str(i))]
-print(matches)
+    print(matches)
 
