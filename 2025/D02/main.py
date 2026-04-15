@@ -53,6 +53,6 @@ for i in test_li:
     matches = [int(match.group(0)) for match in re.finditer(pattern, str(i))]
     for n in matches:
         match_li.append(n)
-# print(match_li)
+print(match_li)
 li_sum = sum(match_li)
 print(li_sum)
