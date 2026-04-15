@@ -1,6 +1,6 @@
 import re
 # ------------------------------------------------ DATA PARSING ----------------------------------------------- #
-with open("test_data.txt") as f:
+with open("data.txt") as f:
     data = f.readlines()
     data_li = [line.split(",") for line in data]
 
@@ -26,8 +26,17 @@ test_li = [li_maker(li) for li in parse_li]
 
 # (\d+) : Captures one or more digits and groups them (Group 1)
 # \1    : Matches the exact same text captured in Group 1
+# \b    : Boundaries, the match must form a complete word/number, instead of being a substring
 pattern = r"\b(\d+)\1\b"
-
+match_li = []
 for i in test_li:
-    matches = [match.group(0) for match in re.finditer(pattern, str(i))]
+    matches = [int(match.group(0)) for match in re.finditer(pattern, str(i))]
+    for n in matches:
+        match_li.append(n)
+# print(match_li)
+li_sum = sum(match_li)
+print(li_sum)
+
+# -------------------------------------------------- PART 2 -------------------------------------------------- #
+
 
