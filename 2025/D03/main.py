@@ -5,7 +5,12 @@ print(data_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
+# for num in data_li:
+#     for n in num:
+#         print(n)
+#     print("\n")
+
 for num in data_li:
-    for n in num:
-        print(n)
-    print("\n")
+    maximum = max(int(n) for n in num)
+    print(maximum)
+
