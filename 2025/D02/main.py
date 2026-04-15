@@ -27,7 +27,27 @@ test_li = [li_maker(li) for li in parse_li]
 # (\d+) : Captures one or more digits and groups them (Group 1)
 # \1    : Matches the exact same text captured in Group 1
 # \b    : Boundaries, the match must form a complete word/number, instead of being a substring
-pattern = r"\b(\d+)\1\b"
+# pattern = r"\b(\d+)\1\b"
+# match_li = []
+# for i in test_li:
+#     matches = [int(match.group(0)) for match in re.finditer(pattern, str(i))]
+#     for n in matches:
+#         match_li.append(n)
+# # print(match_li)
+# li_sum = sum(match_li)
+# print(li_sum)
+
+# -------------------------------------------------- PART 2 -------------------------------------------------- #
+
+# \b : Asserts a word boundary (start of the number).
+#
+# (\d+): Captures the base sequence of one or more digits (Group 1).
+#
+# \1+ : Matches the exact sequence captured in Group 1, one or more times.
+#
+# \b : Asserts a word boundary (end of the number).
+
+pattern = r"\b(\d+)\1+\b"
 match_li = []
 for i in test_li:
     matches = [int(match.group(0)) for match in re.finditer(pattern, str(i))]
@@ -36,7 +56,3 @@ for i in test_li:
 # print(match_li)
 li_sum = sum(match_li)
 print(li_sum)
-
-# -------------------------------------------------- PART 2 -------------------------------------------------- #
-
-
