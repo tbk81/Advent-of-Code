@@ -1,3 +1,5 @@
+import heapq
+
 with open("test_data.txt") as f:
     data = f.readlines()
     data_li = [line.strip() for line in data]
@@ -18,20 +20,18 @@ with open("test_data.txt") as f:
     # maximum = max(int(n) for n in num)
     # print(maximum)
 
-num = '811111111111119'
-first_num = 0
-first_pos = 0
-second_num = 0
-second_pos = 0
-num_li = list(map(int, num))  # creates a list of int from a str
-print(num_li)
-for i in range(len(num_li)):
-    if num_li[i] > first_num:
-        first_num = num_li[i]
-        first_pos = i
-    # print(i)
-print(first_num, first_pos)
+test_num = '811111111111119'
 
-# for n in num:
-#     if int(n) > first_num:
-#         first_num = int(n)
+def joltage(num):
+    num_li = list(map(int, num))
+    top = heapq.nlargest(2, num_li)
+    pos1 = num_li.index(top[0])
+    pos2 = num_li.index(top[1])
+    if pos1 < pos2:
+        fin_num = int(str(top[0]) + str(top[1]))
+    else:
+        fin_num = int(str(top[1]) + str(top[0]))
+    return fin_num
+
+
+print(joltage(test_num))
