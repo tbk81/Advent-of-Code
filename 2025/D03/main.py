@@ -3,24 +3,9 @@ import heapq
 with open("test_data.txt") as f:
     data = f.readlines()
     data_li = [line.strip() for line in data]
-# print(data_li)
+print(data_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
-
-# for num in data_li:
-#     for n in num:
-#         print(n)
-#     print("\n")
-
-# for num in data_li:
-#     first_num = 0
-#     second_num = 0
-#     for n in num:
-#         print(n)
-    # maximum = max(int(n) for n in num)
-    # print(maximum)
-
-test_num = '811111111111119'
 
 def joltage(num):
     num_li = list(map(int, num))
@@ -34,4 +19,8 @@ def joltage(num):
     return fin_num
 
 
-print(joltage(test_num))
+joltage_li = []
+for i in data_li:
+    joltage_li.append(joltage(i))
+print(joltage_li)
+# print(joltage(test_num))
