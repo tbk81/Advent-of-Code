@@ -10,7 +10,18 @@ print(data_li)
 #         print(n)
 #     print("\n")
 
-for num in data_li:
-    maximum = max(int(n) for n in num)
-    print(maximum)
+# for num in data_li:
+#     first_num = 0
+#     second_num = 0
+#     for n in num:
+#         print(n)
+    # maximum = max(int(n) for n in num)
+    # print(maximum)
 
+num = '811111111111119'
+first_num = 0
+second_num = 0
+for n in num:
+    if int(n) > first_num:
+        first_num = int(n)
+print(first_num)
