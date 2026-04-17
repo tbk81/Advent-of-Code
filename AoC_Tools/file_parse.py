@@ -4,7 +4,8 @@ class AutoParse:
         pass
 
 
-    def list_parse(self, li):
-        with open(li) as f:
+    def txt_parse(self, txt):
+        with open(txt) as f:
             data = f.readlines()
             return [l.strip() for l in data]
+
