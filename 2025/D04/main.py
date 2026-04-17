@@ -15,14 +15,13 @@ print(data_arr)
 # print(data_arr[0])
 # print(data_arr[0][0])
 # print(data_arr[0][0][0])
-# for li in data_arr:
-#     for i in li:
-#         for j in i:
-#             print(j)
-#         print("\n")
+for li in data_arr:
+    for element in li:
+        for i in element:
+            if i == '@':
+                print('@')
+        print("\n")
 
-for i, j in np.argwhere(data_arr == 1):
-    print(i, j)
 
 
 
