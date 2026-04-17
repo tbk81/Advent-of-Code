@@ -1,4 +1,4 @@
-import heapq
+# import heapq
 from itertools import combinations
 
 with open("data.txt") as f:
@@ -40,15 +40,40 @@ with open("data.txt") as f:
 
 # -------------------------------------------------- PART 2 -------------------------------------------------- #
 
-def find_joltage(num):
-    num_li = list(map(int, num))
-    all_combos = [int("".join(map(str, combo))) for combo in combinations(num_li, 12)]
-    return max(all_combos)
+def get_max_joltage(bank_string, k=12):
+    """
+    Finds the largest k-digit number from a string of digits
+    while preserving the original left-to-right order.
+    """
+    stack = []
+
+    # This is how many digits allowed to "throw away"
+    drop_count = len(bank_string) - k
+
+    for digit in bank_string:
+        # If the current digit is BIGGER than the last digit saved and  still allowed to throw numbers away,
+        # throw the smaller number away
+        while drop_count > 0 and stack and stack[-1] < digit:
+            stack.pop()
+            drop_count -= 1
+
+        stack.append(digit)
+
+    # Reached the end but still need to throw numbers away
+    # (e.g., the numbers were already descending like 9876),
+    # chop them off the end.
+    while drop_count > 0:
+        stack.pop()
+        drop_count -= 1
+
+    return int("".join(stack))
 
 
-joltage_li = []
-for i in data_li:
-    joltage_li.append(find_joltage(i))
-# print(joltage_li)
-print(sum(joltage_li))
+total_output_joltage = 0
+for bank in data_li:
+    max_joltage = get_max_joltage(bank, 12)
+    print(f"Bank max: {max_joltage}")
+    total_output_joltage += max_joltage
+
+print(f"\nPart Two Answer: {total_output_joltage}")
 
