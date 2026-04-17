@@ -4,7 +4,7 @@ from itertools import combinations
 with open("data.txt") as f:
     data = f.readlines()
     data_li = [line.strip() for line in data]
-print(data_li)
+# print(data_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
@@ -26,19 +26,29 @@ print(data_li)
 # print(joltage_li)
 # print(joltage(test_num))
 
+# def find_joltage(num):
+#     num_li = list(map(int, num))
+#     all_combos = [int(f"{a}{b}") for a, b in combinations(num_li, 2)]
+#     return max(all_combos)
+#
+#
+# joltage_li = []
+# for i in data_li:
+#     joltage_li.append(find_joltage(i))
+# print(joltage_li)
+# print(sum(joltage_li))
+
+# -------------------------------------------------- PART 2 -------------------------------------------------- #
+
 def find_joltage(num):
     num_li = list(map(int, num))
-    all_combos = [int(f"{a}{b}") for a, b in combinations(num_li, 2)]
+    all_combos = [int("".join(map(str, combo))) for combo in combinations(num_li, 12)]
     return max(all_combos)
 
 
 joltage_li = []
 for i in data_li:
     joltage_li.append(find_joltage(i))
-print(joltage_li)
+# print(joltage_li)
 print(sum(joltage_li))
-
-# -------------------------------------------------- PART 2 -------------------------------------------------- #
-
-
 
