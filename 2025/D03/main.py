@@ -19,8 +19,15 @@ def joltage(num):
     return fin_num
 
 
-joltage_li = []
-for i in data_li:
-    joltage_li.append(joltage(i))
-print(joltage_li)
+# joltage_li = []
+# for i in data_li:
+#     joltage_li.append(joltage(i))
+# print(joltage_li)
 # print(joltage(test_num))
+
+test_num = '818181911112111'
+num_li = list(map(int, test_num))
+num = 0
+for i in range(len(num_li)):
+    run_num = int(str(num_li[i]) + str(num_li[i+1]))
+    print(run_num)
