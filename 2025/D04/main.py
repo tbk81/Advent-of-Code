@@ -6,10 +6,27 @@ def txt_arr_parse(txt):
         return [l.strip().split(' ') for l in f.readlines()]
 
 
-data_arr = txt_arr_parse("test_data.txt")
-print(data_arr)
+data_li = txt_arr_parse("test_data.txt")
+data_arr = np.array(data_li)
 
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
+
+print(data_arr)
+# print(data_arr[0])
+# print(data_arr[0][0])
+# print(data_arr[0][0][0])
+# for li in data_arr:
+#     for i in li:
+#         for j in i:
+#             print(j)
+#         print("\n")
+
+for i, j in np.argwhere(data_arr == 1):
+    print(i, j)
+
+
+
+
 
 
 
@@ -26,3 +43,9 @@ print(data_arr)
 
 # with open("test_data.txt") as f:
 #     data_arr = [l.strip().split(' ') for l in f.readlines()]
+
+# for x in np.nditer(data_arr, flags=['external_loop']):
+#     print(x, end=' ')
+# print("\n")
+# for x in np.nditer(data_arr, flags=['external_loop'], order='F'):
+#     print(x, end=' ')
