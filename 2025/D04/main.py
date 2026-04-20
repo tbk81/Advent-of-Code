@@ -9,10 +9,12 @@ def txt_arr_parse(txt):
 data_li = txt_arr_parse("test_data.txt")
 data_arr = np.array(data_li)
 
+arr = np.loadtxt("test_data.txt")
+print(arr)
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
-print(data_arr)
-print(data_arr.shape)
+# print(data_arr)
+# print(data_arr.shape)
 
 # ROWS, COLS = len(grid), len(grid[0])
 # some more code ...
