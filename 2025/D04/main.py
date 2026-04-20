@@ -18,7 +18,7 @@ print(data_arr.shape)
 # some more code ...
 
 # top, top right, right, bottom right, bottom, bottom left, left, top left
-directions = [(-1, 0), (-1, 1), (0, 1), (1,1), (1, 0), (1,-1), (0, -1), (-1,-1)]
+directions = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
 
 # while queue:
 #     row, col = queue.popleft()
@@ -27,6 +27,7 @@ directions = [(-1, 0), (-1, 1), (0, 1), (1,1), (1, 0), (1,-1), (0, -1), (-1,-1)]
 #         if ROWS > neighbor_row >= 0 and COLS > neighbor_col >= 0:
 #             pass
             # do something, e.g. BFS ...
+
 # https://andrei.poehlmann.dev/post/visiting-all-neighs-in-grid/
 
 
