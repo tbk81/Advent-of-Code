@@ -7,10 +7,11 @@ def txt_arr_parse(txt):
 
 
 data_li = txt_arr_parse("test_data.txt")
-data_arr = np.array(data_li)
+# data_arr = np.array(data_li)
 
-arr = np.loadtxt("test_data.txt")
+arr = np.loadtxt("test_data.txt", dtype=str, delimiter=" ")
 print(arr)
+print(data_arr.shape)
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
 # print(data_arr)
