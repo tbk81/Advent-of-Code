@@ -29,7 +29,7 @@ while queue:
     for d in directions:
         neighbor_row, neighbor_col = row + d[0], col + d[1]
         if ROWS > neighbor_row >= 0 and COLS > neighbor_col >= 0:
-#             pass
+            pass
             # do something, e.g. BFS ...
 
 # https://andrei.poehlmann.dev/post/visiting-all-neighs-in-grid/
