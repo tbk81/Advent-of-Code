@@ -14,6 +14,9 @@ import numpy as np
 # print(arr.shape)
 # -------------------------------------------------- PART 1 -------------------------------------------------- #
 
+with open("data.txt", "r") as f:
+    data = f.read()
+
 def count_accessible_rolls(grid_text):
     # Convert the raw text into a 2D grid (list of strings)
     grid = [line.strip() for line in grid_text.strip().split('\n')]
@@ -53,8 +56,8 @@ def count_accessible_rolls(grid_text):
 
 
 
-result = count_accessible_rolls('data.txt')
-print(f"Accessible paper rolls in example: {result}")
+result = count_accessible_rolls(data)
+print(f"Accessible paper rolls: {result}")
 
 
 
